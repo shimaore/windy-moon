@@ -62,6 +62,10 @@ CCNQ4 conventions for document types and keys
         key = $?[2]
 
         validate_type = ->
+
+          unless type? and key?
+            forbidden '`_id` must be <type>:<key>'
+
           unless doc.type is type
             forbidden 'Missing or invalid `type` field.'
 

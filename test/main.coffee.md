@@ -77,3 +77,18 @@
             catch
               done()
           g {beast:3}, {beast:4}, {}, {admins:{},members:{}}
+
+      describe '@validate_type', ->
+        it 'should detect', (done) ->
+          f = main ->
+            @validate_type()
+            done()
+          f {_id:'number:1234',type:'number',number:'1234'}, {}, {}, {admins:{},members:{}}
+
+        it 'should report', (done) ->
+          g = main ->
+            try
+              @validate_type()
+            catch
+              done()
+          g {_id:'number:1234',type:'number'}, {}, {}, {admins:{},members:{}}
