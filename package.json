@@ -1,6 +1,6 @@
 {
   "name": "windy-moon",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "DSL for CCNQ4 validation functions",
   "main": "index.js",
   "directories": {
