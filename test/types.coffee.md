@@ -1,6 +1,6 @@
     assert = require 'assert'
     describe 'types', ->
-      {digits,boolean,optional_digits,array,timezone,language} = require '../types'
+      {digits,boolean,array,timezone,language,optional} = require '../types'
       it 'should detect properly', ->
         assert ( digits '12345'             ) , 'digits'
         assert ( not digits '123f5'         ) , 'not digits'
@@ -9,9 +9,9 @@
         assert ( boolean false              ) , 'boolean'
         assert ( not boolean 3              ) , 'not boolean'
         assert ( not boolean null           ) , 'not boolean'
-        assert ( optional_digits null       ) , 'optional digits'
-        assert ( optional_digits '42'       ) , 'optional digits'
-        assert ( not optional_digits true   ) , 'not optional digits'
+        assert ( optional(digits) null      ) , 'optional digits'
+        assert ( optional(digits) '42'      ) , 'optional digits'
+        assert ( not optional(digits) true  ) , 'not optional digits'
         assert ( array []                   ) , 'array'
         assert ( array [12,34,56]           ) , 'array'
         assert ( not array true             ) , 'not array'
