@@ -38,7 +38,7 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
         validate_fields = (validators) ->
           for own field, validator of validators
             value = doc[field]
-            unless validator value
+            unless validator value, doc
               forbidden "Field `#{field}` has invalid value `#{JSON.stringify value}`."
 
 ### Changes validations
