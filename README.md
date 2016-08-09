@@ -32,10 +32,14 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
 
 ### Field validation
 
-        validate_fields = (validator, except = []) ->
-          for own k,v of doc when k not in except
-            unless validator[k]?(v)
-              forbidden "Field `#{k}` has invalid value `#{JSON.stringify v}`."
+
+`validators` is an Object which maps fields to validation functions.
+
+        validate_fields = (validators) ->
+          for own field, validator of validators
+            value = doc[field]
+            unless validator value
+              forbidden "Field `#{field}` has invalid value `#{JSON.stringify value}`."
 
         forbid_adding_fields = (except = []) ->
           for own k of doc when k not in except
