@@ -41,18 +41,20 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
             unless validator value
               forbidden "Field `#{field}` has invalid value `#{JSON.stringify value}`."
 
-        forbid_adding_fields = (except = []) ->
-          for own k of doc when k not in except
+### Changes validations
+
+        restrict_adding_fields = (allowed = []) ->
+          for own k of doc when k not in allowed
             unless had k
               forbidden "Field `#{k}` was added."
 
-        forbid_removing_fields = (except = []) ->
-          for own k of oldDoc when k not in except
+        restrict_removing_fields = (allowed = []) ->
+          for own k of oldDoc when k not in allowed
             unless has k
               forbidden "Field `#{k}` was removed."
 
-        forbid_modifying_fields = (validate_field, except = []) ->
-          for own k of doc when k not in except
+        restrict_modifying_fields = (allowed = []) ->
+          for own k of doc when k not in allowed
             unchanged k
 
 ### Document type
@@ -176,9 +178,9 @@ Field presence
 Field validation
 
           validate_fields
-          forbid_adding_fields
-          forbid_removing_fields
-          forbid_modifying_fields
+          restrict_adding_fields
+          restrict_removing_fields
+          restrict_modifying_fields
 
 Document type
 

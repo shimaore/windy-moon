@@ -33,47 +33,47 @@
               done()
           g {beast:3}, {beast:4}, {}, {admins:{},members:{}}
 
-      describe '@forbid_adding_fields', ->
+      describe '@restrict_adding_fields', ->
         it 'should detect', (done) ->
           f = main ->
-            @forbid_adding_fields()
+            @restrict_adding_fields()
             done()
           f {beast:3}, {beast:3}, {}, {admins:{},members:{}}
 
         it 'should report', (done) ->
           g = main ->
             try
-              @forbid_adding_fields()
+              @restrict_adding_fields()
             catch
               done()
           g {beast:3,fauna:2}, {beast:4}, {}, {admins:{},members:{}}
 
-      describe '@forbid_removing_fields', ->
+      describe '@restrict_removing_fields', ->
         it 'should detect', (done) ->
           f = main ->
-            @forbid_removing_fields()
+            @restrict_removing_fields()
             done()
           f {beast:3}, {beast:3}, {}, {admins:{},members:{}}
 
         it 'should report', (done) ->
           g = main ->
             try
-              @forbid_removing_fields()
+              @restrict_removing_fields()
             catch
               done()
           g {}, {beast:4}, {}, {admins:{},members:{}}
 
-      describe '@forbid_modifying_fields', ->
+      describe '@restrict_modifying_fields', ->
         it 'should detect', (done) ->
           f = main ->
-            @forbid_modifying_fields()
+            @restrict_modifying_fields()
             done()
           f {beast:3}, {beast:3}, {}, {admins:{},members:{}}
 
         it 'should report', (done) ->
           g = main ->
             try
-              @forbid_modifying_fields()
+              @restrict_modifying_fields()
             catch
               done()
           g {beast:3}, {beast:4}, {}, {admins:{},members:{}}
