@@ -112,7 +112,7 @@ The `updated_by` field in the document is a `charming-circle` convention.
 
         {admins,members} = secObj
 
-        is_owner = members?.users? and name in members.users
+        is_owner = members?.names? and name in members.names
 
         enforce_ownership = ->
           unless is_owner

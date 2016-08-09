@@ -98,7 +98,7 @@
           f = main ->
             @enforce_ownership()
             done()
-          f {}, {}, {name:'jane'}, {admins:{},members:{users:['jane']}}
+          f {}, {}, {name:'jane'}, {admins:{},members:{names:['jane']}}
 
         it 'should report', (done) ->
           f = main ->
@@ -106,4 +106,4 @@
               @enforce_ownership()
             catch
               done()
-          f {}, {}, {name:'joe'}, {admins:{},members:{users:['jane']}}
+          f {}, {}, {name:'joe'}, {admins:{},members:{names:['jane']}}
