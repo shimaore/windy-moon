@@ -92,3 +92,18 @@
             catch
               done()
           g {_id:'number:1234',type:'number'}, {}, {}, {admins:{},members:{}}
+
+      describe '@enforce_ownership', ->
+        it 'should detect', (done) ->
+          f = main ->
+            @enforce_ownership()
+            done()
+          f {}, {}, {name:'jane'}, {admins:{},members:{users:['jane']}}
+
+        it 'should report', (done) ->
+          f = main ->
+            try
+              @enforce_ownership()
+            catch
+              done()
+          f {}, {}, {name:'joe'}, {admins:{},members:{users:['jane']}}

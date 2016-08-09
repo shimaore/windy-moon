@@ -110,12 +110,9 @@ The `updated_by` field in the document is a `charming-circle` convention.
 
 ### Database security
 
-The `owner` field in the security document is a `charming-circle` convention.
-(At least in CouchDB 1.6.1, the content of the security object is passed as-is even if the fields are not in the documented ones.)
+        {admins,members} = secObj
 
-        {admins,members,owner} = secObj
-
-        is_owner = name is owner
+        is_owner = members?.users? and name in members.users
 
         enforce_ownership = ->
           unless is_owner
@@ -216,7 +213,6 @@ Database security
           members_names: members.names
           members_roles: members.roles
 
-          owner
           is_owner
           enforce_ownership
 
