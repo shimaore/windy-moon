@@ -206,12 +206,12 @@ Roles
 Database security
 
           admins
-          admins_names: admins.names
-          admins_roles: admins.roles
+          admins_names: admins?.names
+          admins_roles: admins?.roles
 
           members
-          members_names: members.names
-          members_roles: members.roles
+          members_names: members?.names
+          members_roles: members?.roles
 
           is_owner
           enforce_ownership
