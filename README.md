@@ -54,7 +54,7 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
               forbidden "Field `#{k}` was removed."
 
         restrict_modifying_fields = (allowed = []) ->
-          for own k of doc when k not in allowed
+          for own k of doc when k isnt '_revisions' and k not in allowed
             unchanged k
 
 ### Document type
