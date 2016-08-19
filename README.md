@@ -28,7 +28,7 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
 
         unchanged = (field) ->
           return if deepEqual oldDoc[field], doc[field]
-          forbidden "Field `#{k}` was modified."
+          forbidden "Field `#{field}` was modified."
 
 ### Field validation
 
