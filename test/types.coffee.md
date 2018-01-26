@@ -1,6 +1,6 @@
     assert = require 'assert'
     describe 'types', ->
-      {digits,boolean,array,timezone,language,domain,optional} = require '../types'
+      {digits,boolean,array,object,timezone,language,domain,optional} = require '../types'
       it 'should detect properly', ->
         assert ( digits '12345'             ) , 'digits'
         assert ( not digits '123f5'         ) , 'not digits'
@@ -25,3 +25,7 @@
         assert ( language 'en'              ) , 'language'
         assert ( not language null          ) , 'not language'
         assert ( domain '42.local'          ) , 'domain'
+        assert ( not domain '!'             ) , 'not domain'
+        assert ( object {}                  ) , 'object'
+        assert ( not object null            ) , 'not object'
+        assert ( not object 42              ) , 'not object'

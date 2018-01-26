@@ -10,6 +10,9 @@ Maybe use `validator` module instead of those?
       (v) -> v is true or v is false
     array =
       (v) -> typeof v is 'object' and v?.length?
+    object =
+      (v) -> v? and typeof v is 'object'
+
     timezone = text
     language = text
     domain =
@@ -48,6 +51,8 @@ Call Forwards
       text
       boolean
       array
+      object
+
       timezone
       language
       domain
