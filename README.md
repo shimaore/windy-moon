@@ -9,7 +9,7 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
     deepEqual = require './deepEqual'
     stateChange = require './stateChange'
 
-    @main = (f) ->
+    main = (f) ->
       (doc,oldDoc,userCtx,secObj) ->
 
 ### Error reporting
@@ -230,3 +230,5 @@ Document-level access
         }
 
         f.call ctx, ctx
+
+    module.exports = {main}
