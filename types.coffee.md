@@ -10,10 +10,10 @@ Maybe use `validator` module instead of those?
       (v) -> v is true or v is false
     array =
       (v) -> typeof v is 'object' and v?.length?
-    timezone =
-      (v) -> typeof v is 'string'
-    language =
-      (v) -> typeof v is 'string'
+    timezone = text
+    language = text
+    domain =
+      (v) -> text(v) and v.match /^[a-z0-9.-]+$/
 
 Call Forwards
 
@@ -50,6 +50,7 @@ Call Forwards
       array
       timezone
       language
+      domain
 
       cf
       any
