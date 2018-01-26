@@ -61,6 +61,14 @@ Usage: `main -> @unauthorized 'Not admin' unless @is_admin()  `
 
         is_design = doc._id?[0] is '_'
 
+`validators` is a list of validation functions (using the same
+model as the CouchDB validation functions).
+
+        validate = (validators) =>
+          validators.forEach (validator) =>
+            validator.call this, doc, oldDoc, userCtx, secObj
+          return
+
 CCNQ4 conventions for document types and keys
 
         $ = doc._id?.match /^(\w+):(.+)$/
@@ -182,6 +190,7 @@ Field validation
 Document type
 
           is_design
+          validate
 
           type
           key
